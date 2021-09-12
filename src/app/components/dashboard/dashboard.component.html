@@ -1,0 +1,130 @@
+<div class="wrapper">
+
+  <nav>
+
+    <header>
+      Welcome, {{this.currentUser.name}} !
+    </header>
+
+    <ul>
+      <li><span>Navigation</span></li>
+      <li><a href="dashboard" class="active" style="text-decoration: none">Users</a></li>
+      <li><a href="add-user" style="text-decoration: none">Add user</a></li>
+      <li><a (click)="logout()">Logout</a></li>
+    </ul>
+
+  </nav>
+
+  <main>
+
+    <h1>User Management Application</h1>
+
+    <div>
+      <div>
+        <p-table #dt [columns]="cols" [value]="users" [paginator]="true" [rows]="15" [(first)]="first" (sortFunction)="customSort($event)" [customSort]="true">
+          <ng-template pTemplate="header">
+            <button label="Clear" class="btn" (click)="clear(dt)">CLEAR FILTERS</button>
+            <tr>
+              <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+                <div class="column-title">
+                  {{col.header}}
+                  <p-sortIcon [field]="col.field"></p-sortIcon>
+                  <p-columnFilter type="text" field="name" display="menu" class="filter"></p-columnFilter>
+                </div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-users let-columns="columns">
+            <tr>
+              <td *ngFor="let col of cols" class="element">
+                <div *ngIf="col.field == 'edit'; else elseBlockDelete">
+                  <button label="OpenDialog" class="btn" (click)="openDialog(users)">EDIT</button>
+                </div>
+                <ng-template #elseBlockDelete>
+                  <ng-container *ngIf="col.field == 'delete'; else elseBlockField">
+                    <button label="Delete" class="btn" (click)="delete(users)">DELETE</button>
+                  </ng-container>
+                </ng-template>
+                <ng-template #elseBlockField>
+                  {{users[col.field]}}
+                </ng-template>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+    <div *ngIf="this.editUserModal == true;">
+      <div class="modal" id="modal-one" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h2>Edit user</h2>
+            <button label="OpenDialog" class="btn btn-close" (click)="close()">X</button>
+          </div>
+          <form class="editForm" [formGroup]="form" >
+            <div class="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                formControlName="name"
+                class="input"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              />
+              <div *ngIf="submitted && f.name.errors" class="error">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+                <div *ngIf="f.name.errors.minlength">
+                  Name must be at least 2 characters
+                </div>
+              </div>
+
+              <label>City</label>
+              <input
+                type="text"
+                formControlName="city"
+                class="input"
+                [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+              />
+              <div *ngIf="submitted && f.city.errors" class="error">
+                <div *ngIf="f.city.errors.required">City is required</div>
+                <div *ngIf="f.city.errors.minlength">
+                  City must be at least 2 characters
+                </div>
+              </div>
+
+              <label>Phone</label>
+              <input
+                type="text"
+                formControlName="phone"
+                class="input"
+                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+              />
+              <div *ngIf="submitted && f.phone.errors" class="error">
+                <div *ngIf="f.phone.errors.required">Phone is required</div>
+                <div *ngIf="f.phone.errors.minlength">
+                  Phone must be at least 2 characters
+                </div>
+              </div>
+
+              <label>Address</label>
+              <input
+                type="text"
+                formControlName="address"
+                class="input"
+                [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+              />
+              <div *ngIf="submitted && f.address.errors" class="error">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+                <div *ngIf="f.address.errors.minlength">
+                  Address must be at least 2 characters
+                </div>
+              </div>
+
+              <button (click)="edit()" class="edit">EDIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

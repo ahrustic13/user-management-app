@@ -1,0 +1,217 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 15px/1 'Open Sans', sans-serif;
+  color: #777;
+}
+
+a {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+}
+
+nav {
+  width: 200px;
+  background:linear-gradient(to right, #9C27B0, #E040FB);
+}
+
+nav header {
+  position: relative;
+  height: 80px;
+  padding: 20px 0 0 15px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+}
+
+nav header span {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+  border: 1px solid #fff;
+}
+
+nav header span:before {
+  content: '\f007';
+  font: normal 20px fontawesome;
+  top: 7px;
+  left: 9px;
+}
+
+nav header a:before {
+  content: '\f08b';
+  font: normal 20px fontawesome;
+  top: 28px;
+  right: 15px;
+}
+
+nav ul span {
+  display: block;
+  padding: 15px;
+  color: rgba(255,255,255,.5);
+  text-transform: uppercase;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+nav ul a {
+  position: relative;
+  display: block;
+  padding: 15px 15px 17px 50px;
+  color: #fff;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+nav ul a:hover,
+nav ul a.active {
+  background: #E040FB;
+}
+
+nav ul a:before {
+  font: normal 16px fontawesome;
+  top: 15px;
+  left: 18px;
+}
+
+main {
+  flex: 1;
+  padding: 25px;
+  background: #f5f5f5;
+}
+
+main h1 {
+  height: 80px;
+  margin: -25px -25px 25px -25px;
+  padding: 0 25px;
+  line-height: 76px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+  background: linear-gradient(to right, #E040FB, #9C27B0);
+}
+
+.element {
+  overflow-wrap: break-word !important;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  border: 0;
+  padding: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  display: block;
+  font-weight: 700;
+}
+
+.filter {
+  margin-top: -3px;
+}
+
+.modal {
+  display: block;
+  position: absolute;
+  top: 10%;
+  background: #f1f1f1;
+  padding: 40px;
+  border-radius: 25px;
+  left: 25%;
+  width: 50%
+}
+
+.modal-header {
+  display: flex;
+  place-content: space-between;
+}
+
+.btn-close {
+  background: transparent;
+  color: black;
+  border: 0;
+  margin-top: -5%;
+  box-shadow: none;
+}
+
+.input {
+  width: 100%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+form.editForm {
+  padding: 30px;
+}
+
+.input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.edit {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  border: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  display: block;
+  margin-top: 25px;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 1660px) {
+  .column-title {
+    display: flex;
+  }
+}
+
